@@ -29,7 +29,7 @@
                         <a class="button is-primary">
                             <strong>Sign up</strong>
                         </a>
-                        <a class="button is-light">
+                        <a v-on:click="login" class="button is-light">
                             Log in
                         </a>
                     </div>
@@ -40,6 +40,11 @@
 </template>
 <script>
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  methods: {
+      login() {
+          this.$router.push('/Dashboard')
+      }
+  }
 }
 </script>
