@@ -8,13 +8,13 @@
         </section>
         <div id="second">
             <b-steps>
-        <b-step-item label="Account" icon="account-key"></b-step-item>
-        <b-step-item label="Profile" icon="account"></b-step-item>
-        <b-step-item label="Connect" icon="account-plus"></b-step-item>
-    </b-steps>
-        <p>Create your account today!</p>
+                <b-step-item label="Account" icon="account-key"></b-step-item>
+                <b-step-item label="Profile" icon="account"></b-step-item>
+                <b-step-item label="Connect" icon="account-plus"></b-step-item>
+            </b-steps>
+            <p>Create your account today!</p>
         </div>
-    <Footer1 />
+        <Footer1 />
     </div>
 </template>
 <script>
