@@ -3,7 +3,8 @@
         <b-navbar>
             <template slot="brand">
                 <b-navbar-item tag="router-link" :to="{ path: '/' }">
-                    <a style="background-color:none!important; font-weight:600;" class="is-primary" >TuraConnect</a>
+                    <img src="@/assets/tura.png" alt="Turaconnect">
+                    <!-- <a style="background-color:none!important; font-weight:600;" class="is-primary" >TuraConnect</a> -->
                 </b-navbar-item>
             </template>
             <template slot="start">
@@ -26,24 +27,34 @@
             <template slot="end">
                 <b-navbar-item tag="div">
                     <div class="buttons">
-                        <a class="button is-primary">
+                        <a v-on:click="login" class="button is-primary">
                             <strong>Sign up</strong>
                         </a>
-                        <a v-on:click="login" class="button is-light">
+                        <a v-on:click="signin" class="button is-light">
                             Log in
                         </a>
                     </div>
                 </b-navbar-item>
             </template>
+
         </b-navbar>
     </div>
 </template>
+<style>
+    div{
+        min-height: 5rem;
+    }
+
+</style>
 <script>
 export default {
   name: 'Navbar',
   methods: {
       login() {
           this.$router.push('/Dashboard')
+      },
+      signin() {
+          this.$router.push('/Login')
       }
   }
 }
