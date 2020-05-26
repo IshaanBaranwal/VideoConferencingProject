@@ -45,8 +45,6 @@ export default {
   },
   methods: {
     auth() {
-      // your code to login user
-      // this is only for example of loading
       this.loading = true;
       setTimeout(() => {
         this.loading = false;
