@@ -1,7 +1,7 @@
 <template>
     <div class="login">
     <div class="login-triangle"></div>
-    <h2 class="login-header">Log in</h2>
+    <h2 class="login-header">Sign Up</h2>
         <form v-on:submit.prevent="onSubmit" class="login-container">
             <p><input type="text" name="name" placeholder="Your Name" v-model="name" required></p>
             <p><input type="email" name="email" placeholder="Your Email" v-model="email" required></p>
@@ -13,7 +13,7 @@
         </form>
     </div>
 </template>
-<style>
+<style scoped>
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 
