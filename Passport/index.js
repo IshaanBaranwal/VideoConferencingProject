@@ -8,7 +8,15 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const mongoStore = require('connect-mongo')(session);
+var bodyParser = require('body-parser');
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+  
+app.use(bodyParser.json());
 app.use(express.urlencoded());
 app.use(cookieParser());
 
