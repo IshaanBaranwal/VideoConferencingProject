@@ -28,10 +28,10 @@
                 <b-navbar-item tag="div">
                     <div class="buttons">
                         <a v-on:click="login" class="button is-primary">
-                            <strong>Sign up</strong>
+                            <strong>Log in</strong>
                         </a>
-                        <a v-on:click="signin" class="button is-light">
-                            Log in
+                        <a v-on:click="signup" class="button is-light">
+                            Sign Up
                         </a>
                     </div>
                 </b-navbar-item>
@@ -50,10 +50,10 @@
 export default {
   name: 'Navbar',
   methods: {
-      login() {
-          this.$router.push('/Dashboard')
+      signup() {
+          this.$router.push('/Signup')
       },
-      signin() {
+      login() {
           this.$router.push('/Login')
       }
   }
