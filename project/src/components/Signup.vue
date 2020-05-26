@@ -2,11 +2,11 @@
     <div class="login">
     <div class="login-triangle"></div>
     <h2 class="login-header">Log in</h2>
-        <form class="login-container">
-            <p><input id="name" type="text" name="name" placeholder="Your Name" required></p>
-            <p><input type="email" name="email" placeholder="Your Email" required></p>
-            <p><input type="password" name="password" placeholder="Password" required></p>
-            <p><input type="password" name="confirm_password" placeholder="Confirm Password" required></p>
+        <form v-on:submit.prevent="onSubmit" class="login-container">
+            <p><input type="text" name="name" placeholder="Your Name" v-model="name" required></p>
+            <p><input type="email" name="email" placeholder="Your Email" v-model="email" required></p>
+            <p><input type="password" name="password" placeholder="Password" v-model="password" required></p>
+            <p><input type="password" name="confirm_password" placeholder="Confirm Password" v-model="confirm_password" required></p>
             <p><input type="submit" value="Sign Up"></p>
             <p v-on:click="login"><input type="submit" value="Already have an Acoount?"></p>
             <p v-on:click="home"><input type="submit" value="Go Back"></p>
@@ -104,18 +104,41 @@
 // import Navbar from './Navbar.vue'
 // import Carousel from './carousel.vue'
 // import Footer1 from './Footer.vue'
+import axios from 'axios'
 export default {
   name: 'Signup',
 //   components: {
 //     Navbar,Carousel,Footer1
 //   }
-    methods: {
+  data() {
+      return{
+        name: '',
+        email: '',
+        password: '',
+        confirm_password: ''
+      }
+  },
+  methods: {
       login() {
           this.$router.push('/Login')
       },
       home(){
           this.$router.push('/')
+      },
+      onSubmit() {
+        axios
+            .post("http://localhost:8000/users/create",{
+                name: this.name,
+                email: this.email,
+                password: this.password,
+                confirm_password: this.confirm_password
+            })
+            .then(res => {
+                console.log(res);
+                this.$router.push('/')
+                })
+            .catch(err => console.log(err));
       }
-    }
+  }
 }
 </script>

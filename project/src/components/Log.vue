@@ -4,9 +4,9 @@
   
   <h2 class="login-header">Log in</h2>
 
-  <form class="login-container">
-    <p><input type="email" placeholder="Email"></p>
-    <p><input type="password" placeholder="Password"></p>
+  <form v-on:submit.prevent="onSubmit" class="login-container">
+    <p><input type="email" name="email" placeholder="Your Email" v-model="email" required></p>
+    <p><input type="password" name="password" placeholder="Password" v-model="password" required></p>
     <p><input type="submit" value="Log in"></p>
     <p v-on:click="signup"><input type="submit" value="Sign Up"></p>
     <p v-on:click="home"><input type="submit" value="Go Back"></p>
@@ -17,19 +17,43 @@
 // import Navbar from './Navbar.vue'
 // import Carousel from './carousel.vue'
 // import Footer1 from './Footer.vue'
+import axios from 'axios'
 export default {
   name: 'Log',
 //   components: {
 //     Navbar,Carousel,Footer1
 //   }
-    methods: {
+  data() {
+      return{
+        email: '',
+        password: ''
+      }
+  },
+  methods: {
       signup() {
           this.$router.push('/Signup')
       },
       home(){
           this.$router.push('/')
+      },
+      onSubmit() {
+        axios
+            .post("http://localhost:8000/users/create-session",{
+                email: this.email,
+                password: this.password,
+            })
+            .then(res => {
+                // TEMPORARY LOGIC NEED TO CHANGE
+                if (res.data==='Logged In'){
+                    this.$router.push('/Dashboard')
+                }
+                else {
+                    console.log('Invalid Information');
+                }
+            })
+            .catch(err => console.log(err));
       }
-    }
+  }
 }
 </script>
 <style>
